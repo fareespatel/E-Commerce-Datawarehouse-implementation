@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ist-cs-dw1.ad.syr.edu.ExternalSources"
+  DTS:DTSID="{FB89B0C8-F955-4A57-AE75-537AE30DABB3}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=ist-cs-dw1.ad.syr.edu;Initial Catalog=ExternalSources;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

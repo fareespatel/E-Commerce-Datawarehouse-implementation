@@ -1,0 +1,17 @@
+select DISTINCT pr.Id as review_id, p.Id as prod_id,
+c.id as cust_id,
+cast(LEFT(pr.CreatedOnUtc,11) as datetime) as reviewdate,
+pr.Rating as ratings,
+verified
+FROM [group9-nopCommerce].dbo.ProductReview pr
+left join [group9-nopCommerce].dbo.Product p
+on p.Id = pr.ProductId
+left join [group9-nopCommerce].dbo.Customer c
+on pr.CustomerId=c.Id
+join (SELECT pr.id as pr_id,verified = CASE ISNULL(op.Id,0) WHEN 0 THEN 0 ELSE 1 END
+FROM [group9-nopCommerce].dbo.ProductReview pr
+left Join (SELECT o.id,oi.ProductId,o.CustomerId FROM [group9-nopCommerce].[dbo].[Order] o
+join [group9-nopCommerce].dbo.OrderItem oi
+on o.Id=oi.OrderId) op
+on op.ProductId = pr.ProductId and op.CustomerId = pr.CustomerId) v
+on v.pr_id = pr.Id
